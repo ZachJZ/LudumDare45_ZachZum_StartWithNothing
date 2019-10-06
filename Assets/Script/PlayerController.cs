@@ -61,9 +61,14 @@ public class PlayerController : MonoBehaviour
     //private List<HealthCounter_Lab1> HCInst;
     //public HealthCounter_Lab1 healthCounter;
 
+    private FrogMan myDJ;
+    //myDJ = FindObjectOfType<FrogMan>();
 
     void Start()
     {
+
+        //private FrogMan myDJ;
+        myDJ = FindObjectOfType<FrogMan>();
 
         gamePause = false;
         PauseMenu.SetActive(false);
@@ -210,7 +215,9 @@ public class PlayerController : MonoBehaviour
             pHealth--;
             iFrames = true;
             //play hurt sound
+            myDJ.playPlayerHurt();
             updateHealth(pHealth);
+
 
             if (pHealth <= 1)
             {
@@ -228,6 +235,7 @@ public class PlayerController : MonoBehaviour
     {
         freezeMenu(true);
         LoseScreen.SetActive(true);
+        myDJ.playSadChord();
     }
 
     public void HealPlayer()
@@ -236,6 +244,7 @@ public class PlayerController : MonoBehaviour
         {
             pHealth++;
             updateHealth(pHealth);
+            myDJ.playPickUp();
         }
     }
 

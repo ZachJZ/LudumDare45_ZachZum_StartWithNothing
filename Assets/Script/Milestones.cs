@@ -47,9 +47,16 @@ public class Milestones : MonoBehaviour
     [SerializeField]
     private float messageTime;
 
+    private FrogMan myDJ;
+    //myDJ = FindObjectOfType<FrogMan>();
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //private FrogMan myDJ;
+        myDJ = FindObjectOfType<FrogMan>();
+
         myMessage.SetActive(false);
         counterDataScript = GameObject.FindObjectOfType<CountingMain>().GetComponent<CountingMain>();
         myPlayer.GetComponent<SpriteRenderer>().sprite = naked;
@@ -77,6 +84,7 @@ public class Milestones : MonoBehaviour
             counterDataScript.MoveTextToCorner();
             counterDataScript.SetPower(2);
             Cursor.visible = false;
+
         }
 
         if (counterDataScript.GetExperience() >= 14 && counterDataScript.GetExperience() <= 50)

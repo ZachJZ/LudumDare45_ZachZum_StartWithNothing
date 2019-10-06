@@ -43,12 +43,17 @@ public class SlimeAI : MonoBehaviour
 
     int drop;
 
+    private FrogMan myDJ;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        myCounter = FindObjectOfType<CountingMain>();
+        //private FrogMan myDJ;
+        myDJ = FindObjectOfType<FrogMan>();
+
+    myCounter = FindObjectOfType<CountingMain>();
         myPlayer = FindObjectOfType<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -228,6 +233,7 @@ public class SlimeAI : MonoBehaviour
         print("exp is " + EXP);
 
         //play death sound
+        //myDJ.playSlimeSquish();
         drop = Random.Range(1, 20);
         if (drop > 8)
         {
@@ -245,6 +251,9 @@ public class SlimeAI : MonoBehaviour
         {
             //Jump Right
             rb.AddForce(new Vector2(Dex, Dex * 2));
+         //   myDJ.playSlimeHurt();
+
+
         }
 
         else
