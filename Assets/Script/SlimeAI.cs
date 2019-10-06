@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class SlimeAI : MonoBehaviour
 {
+    [SerializeField]
     private CountingMain myCounter;
+    private PlayerController myPlayer;
     private int Difficulty;
+
+    public GameObject Heart;
 
     public Color myGreen;
     public Color myRed;
@@ -19,9 +23,10 @@ public class SlimeAI : MonoBehaviour
     [SerializeField]
     private int Str;
     [SerializeField]
+    private int MaxHP;
     private int HP;
     [SerializeField]
-    private int JumpPow = 5;
+    private int JumpPow;
     private int EXP;
 
     [SerializeField]
@@ -35,13 +40,16 @@ public class SlimeAI : MonoBehaviour
 
     public BoxCollider2D HitBox; //not trigger
     public BoxCollider2D HurtBox; //trigger
-    
+
+    int drop;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         myCounter = FindObjectOfType<CountingMain>();
+        myPlayer = FindObjectOfType<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
 
         if (!name.Contains("Green") && !name.Contains("Blue") && !name.Contains("Red"))
@@ -56,8 +64,10 @@ public class SlimeAI : MonoBehaviour
             Fuse = Random.Range(3,6);
             Str = 1;
             Dex = Random.Range(45, 60);
-            HP = Random.Range(1,4);
-            EXP = HP + Str;
+            MaxHP = Random.Range(1,4);
+            EXP = MaxHP += Str;
+            JumpPow = Random.Range(2, 3);
+
             //print("Slme is green");
 
         }
@@ -70,7 +80,9 @@ public class SlimeAI : MonoBehaviour
             Fuse = Random.Range(2,5);
             Str = 2;
             Dex = Random.Range(90,110);
-            HP = Random.Range(5,9);
+            MaxHP = Random.Range(5,9);
+            EXP = MaxHP += Str;
+            JumpPow = Random.Range(3, 5);
             //print("Slme is blue");
 
         }
@@ -83,7 +95,9 @@ public class SlimeAI : MonoBehaviour
             Fuse = Random.Range(1,3);
             Str = 3;
             Dex = Random.Range(70, 85);
-            HP = Random.Range(8,15);
+            MaxHP = Random.Range(8,15);
+            EXP = MaxHP += Str;
+            JumpPow = Random.Range(3, 4);
             //print("Slme is red");
         }
 
@@ -93,6 +107,8 @@ public class SlimeAI : MonoBehaviour
             Debug.LogError("Something went wrong. The slime was not assigned a color, and a color was not detected");
 
         }
+
+        HP = MaxHP;
     }
 
     // Update is called once per frame
@@ -102,6 +118,7 @@ public class SlimeAI : MonoBehaviour
 
         Timer += Time.deltaTime;
 
+        //hp check
         if (HP <= 0)
         {
             SlimeDeath();
@@ -110,7 +127,7 @@ public class SlimeAI : MonoBehaviour
         if (Timer >= Fuse)
         {
             Intel = Random.Range(0, 7);
-            print("Intel is " + Intel);
+            //print("Intel is " + Intel);
 
             if (Intel >= 0 && Intel <= 3)
             {
@@ -207,9 +224,19 @@ public class SlimeAI : MonoBehaviour
     void SlimeDeath()
     {
         //give xp
+        myCounter.ModExperience(EXP);
+        print("exp is " + EXP);
+
         //play death sound
-        //chance to drop something
+        drop = Random.Range(1, 20);
+        if (drop > 8)
+        {
+            //spawn heart
+            Instantiate(Heart, transform.position, transform.rotation );
+            //print("made a heart ... maybe");
+        }
         //delet this :gun:
+        Destroy(gameObject);
     }
 
     void Jump(bool Right)
@@ -234,29 +261,46 @@ public class SlimeAI : MonoBehaviour
         {
             //Jump Right
             rb.AddForce(new Vector2(Dex, Dex * JumpPow));
-
         }
-
         else
         {
             //Jump Left
             rb.AddForce(new Vector2(-Dex, Dex * JumpPow));
-
         }
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.name == "Sword" || col.name == "Club")
+        //print("collider is " + col.gameObject.name);
+        //if (col.name == "Sword" || col.name == "Club")
+        if (col.GetComponent<Assault>())
         {
+            //print("Slime was hit");
             HP -= myCounter.GetPower();
+
+            if ((col.transform.position.x - transform.position.x) > 0)
+            {
+                //send left
+                rb.AddForce(new Vector2(-Dex, JumpPow * 2));
+                print("X is greater, jumping left");
+            }
+
+            else if ((col.transform.position.x - transform.position.x) < 0)
+            { 
+                rb.AddForce(new Vector2(Dex, JumpPow * 2));
+                print("X is greater, jumping right");
+            }
         }
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnCollisionEnter2D(Collision2D col)
     {
+        //print("collider is " + col.gameObject.name);
+
         if (col.gameObject.name == "Hero")
         {
+            //print("Slime hit hero");
+            myPlayer.DamagePlayer();
             //Damage hero
             //knock back hero?
         }

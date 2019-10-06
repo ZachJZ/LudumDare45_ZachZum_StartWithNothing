@@ -112,10 +112,13 @@ public class CountingMain : MonoBehaviour
 
     public void SetPower (int SetTo)
     {
+        //myPower = SetTo;
         myPower = SetTo;
+        //print("(setpower)Experience is now " + myExperience);
+
     }
 
-    public void ModExperience(int modBy)
+    public void ModExperience (int modBy)
     {
         //print("Experience is " + myExperience + ". Modifying it by " + modBy);
         myExperience += modBy;

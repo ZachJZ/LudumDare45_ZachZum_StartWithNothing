@@ -54,7 +54,7 @@ public class HUD_Lab1 : MonoBehaviour {
         //Function for creating the other Health Tokens
     public void CreateHealthIcons(int numHealth)
     {
-        print(difference);
+        //print(difference);
             //Check to see if the list is empty
         if (HCInst == null)
         {
@@ -65,7 +65,7 @@ public class HUD_Lab1 : MonoBehaviour {
             HCInst.Add(healthCounter);
                 //Sets the space between each new icon
             Vector3 positionOffSet = new Vector3(-difference, 0f, 0f);
-            print("PosOff " + positionOffSet);
+            //print("PosOff " + positionOffSet);
 
 
             //

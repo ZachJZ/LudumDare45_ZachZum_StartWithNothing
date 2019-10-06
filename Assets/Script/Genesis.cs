@@ -12,11 +12,13 @@ public class Genesis : MonoBehaviour
 
 
     private CountingMain myCounter;
+    private PlayerController myPLayer;
 
     // Start is called before the first frame update
     void Start()
     {
         myCounter = FindObjectOfType<CountingMain>();
+        myPLayer = FindObjectOfType<PlayerController>();
 
         Player.SetActive(false);
         HUD.SetActive(false);
@@ -35,17 +37,18 @@ public class Genesis : MonoBehaviour
 
             Block.SetActive(false);
 
+myPLayer.CreateHealthIcons(5);
             //Player.GetComponent<PlayerController>().enabled = false;
-            StartCoroutine("EnableHim");
+           // StartCoroutine("EnableHim");
         }
     }
 
-    IEnumerator EnableHim()
-    {
-        new WaitForSeconds(5f);
-        Player.GetComponent<PlayerController>().enabled = true;
+    //IEnumerator EnableHim()
+    //{
+    //    new WaitForSeconds(5f);
+    //    Player.GetComponent<PlayerController>().enabled = true;
 
-        yield return new WaitForSeconds(1);
+    //    yield return new WaitForSeconds(1);
 
-    }
+    //}
 }
