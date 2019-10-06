@@ -77,7 +77,7 @@ public class CountingMain : MonoBehaviour
         float startSize;
         startSize = myCounter.fontSize;
 
-        myCounter.fontSize = myCounter.fontSize + 10;
+        myCounter.fontSize = myCounter.fontSize + 20;
 
         while (myCounter.fontSize > startSize)
         {
@@ -90,7 +90,7 @@ public class CountingMain : MonoBehaviour
 
     IEnumerator ShrinkCR()
     {
-        while (myCounter.fontSize > 14)
+        while (myCounter.fontSize > 28)
         {
             myCounter.fontSize--;
             yield return new WaitForSeconds(0.01f);

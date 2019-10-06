@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     //public float lowJumpMultiplier = 2f;
 
     private int pHealth;
+    [SerializeField]
+    private GameObject[] pHearts;
 
 
     public Animator clubAnim;
@@ -32,6 +34,10 @@ public class PlayerController : MonoBehaviour
     private bool jump = false;
 
     private bool attackCheck;
+
+    //private List<HealthCounter_Lab1> HCInst;
+    //public HealthCounter_Lab1 healthCounter;
+
 
     void Start()
     {
@@ -99,4 +105,66 @@ public class PlayerController : MonoBehaviour
         print("Attack stop activated");
 
     }
+
+    //void StartPlayerHealth()
+    //{
+    //    pHearts[0].SetActive(true);
+    //    pHearts[1].SetActive(true);
+    //    pHearts[2].SetActive(true);
+    //    pHearts[3].SetActive(true);
+    //}
+
+    void DamagePlayer()
+    {
+
+    }
+
+    //public void CreateHealthIcons(int numHealth)
+    //{
+    //    //Check to see if the list is empty
+    //    if (HCInst == null)
+    //    {
+    //        //Creates a new list
+    //        HCInst = new List<HealthCounter_Lab1>();
+    //        //
+    //        HCInst.Add(healthCounter);
+    //        //Sets the space between each new icon
+    //        Vector3 positionOffSet = new Vector3(0.91f, 0f, 0f);
+
+    //        //
+    //        for (int i = 1; i < numHealth; ++i)
+    //        {
+    //            //Sets the script to a usable variable
+    //            HealthCounter_Lab1 newHealth;
+    //            //Creates new healthCounter and sets position and rotation
+    //            newHealth = Instantiate(healthCounter, healthCounter.transform.position, healthCounter.transform.rotation) as HealthCounter_Lab1;
+
+    //            //Sets value of newPosition to where the first icon was created
+    //            Vector3 newPosition = newHealth.transform.position;
+    //            //Sets position based off of number of icons created
+    //            newPosition.x += (positionOffSet.x * i);
+    //            //Places icon at appropriate position
+    //            newHealth.transform.position = newPosition;
+    //            //Makes sure each new icon is in a uniform scale
+    //            newHealth.transform.localScale = new Vector3(1f, 1f, 1f);
+
+    //            //Adds counter to list
+    //            HCInst.Add(newHealth);
+    //        }
+    //    }
+    //}
+
+    ////Function that sets active the correct number of Health icons
+    //public void updateHealth(int numHealth)
+    //{
+    //    //Runs through a number of times equal to the size of the list
+    //    for (int i = 0; i < HCInst.Count; i++)
+    //    {
+    //        //Sets active each icon that is to be used
+    //        bool bActivate = i < numHealth;
+    //        HCInst[i].gameObject.SetActive(bActivate);
+
+    //    }
+    //}
+
 }

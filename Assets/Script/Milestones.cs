@@ -60,7 +60,7 @@ public class Milestones : MonoBehaviour
         //    counterDataScript.TextShake();
         //}
 
-        if (counterDataScript.GetExperience() == 10)
+        if (counterDataScript.GetExperience() == 30)
         {
             myPlayer.GetComponent<SpriteRenderer>().sprite = hunter;
             //CLOTHES GET popup
@@ -78,6 +78,12 @@ public class Milestones : MonoBehaviour
         {
             myPlayer.GetComponent<SpriteRenderer>().sprite = knight;
         }
+
+        if (counterDataScript.GetExperience() == 500)
+        {
+            //WIN
+        }
+
 
 
     }

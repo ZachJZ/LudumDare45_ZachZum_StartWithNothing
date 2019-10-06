@@ -109,7 +109,7 @@ public class SlimeAI : MonoBehaviour
 
         if (Timer >= Fuse)
         {
-            Intel = Random.Range(0, 3);
+            Intel = Random.Range(0, 7);
             print("Intel is " + Intel);
 
             if (Intel >= 0 && Intel <= 3)
