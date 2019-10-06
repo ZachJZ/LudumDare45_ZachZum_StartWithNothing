@@ -243,7 +243,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 240872160}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2656896210394394510, guid: c8f911d14fcbb0b459eda581b2a98b6d,
+          type: 3}
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &240872160
@@ -510,7 +522,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456360167}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -1462,7 +1474,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380636024}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1380636026
 Camera:
   m_ObjectHideFlags: 0
@@ -1869,7 +1881,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Volume
+  m_Text: Quit
 --- !u!222 &1976542661
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1950,6 +1962,11 @@ PrefabInstance:
       propertyPath: boomBox
       value: 
       objectReference: {fileID: 456360168}
+    - target: {fileID: 2656896210394394511, guid: c8f911d14fcbb0b459eda581b2a98b6d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6610657714724161120, guid: c8f911d14fcbb0b459eda581b2a98b6d,
         type: 3}
       propertyPath: m_RootOrder

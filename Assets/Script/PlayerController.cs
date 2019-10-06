@@ -57,18 +57,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject PauseMenu;
 
+    private Milestones myMiles;
+    private CountingMain myCounter;
 
     //private List<HealthCounter_Lab1> HCInst;
     //public HealthCounter_Lab1 healthCounter;
 
-    private FrogMan myDJ;
+    //private FrogMan myDJ;
     //myDJ = FindObjectOfType<FrogMan>();
 
     void Start()
     {
-
+        myMiles = FindObjectOfType<Milestones>();
         //private FrogMan myDJ;
-        myDJ = FindObjectOfType<FrogMan>();
+        //myDJ = FindObjectOfType<FrogMan>();
 
         gamePause = false;
         PauseMenu.SetActive(false);
@@ -99,7 +101,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        //if (GetExperience() >= 10)
+        //{
+
+        //}
+
+            if (Input.GetKeyDown(KeyCode.Escape))
         {
             Halt();
         }
@@ -215,14 +222,15 @@ public class PlayerController : MonoBehaviour
             pHealth--;
             iFrames = true;
             //play hurt sound
-            myDJ.playPlayerHurt();
+            //myDJ.playPlayerHurt();
             updateHealth(pHealth);
-
 
             if (pHealth <= 1)
             {
                 //lose game
                 print("You lost!");
+                LoseGame();
+                myMiles.ZAWARDO();
                 //deactivate player
                 //deactivate hud
                 //lose screen
@@ -235,7 +243,7 @@ public class PlayerController : MonoBehaviour
     {
         freezeMenu(true);
         LoseScreen.SetActive(true);
-        myDJ.playSadChord();
+        //myDJ.playSadChord();
     }
 
     public void HealPlayer()
@@ -244,7 +252,7 @@ public class PlayerController : MonoBehaviour
         {
             pHealth++;
             updateHealth(pHealth);
-            myDJ.playPickUp();
+            //myDJ.playPickUp();
         }
     }
 
@@ -296,6 +304,7 @@ public class PlayerController : MonoBehaviour
         //Runs through a number of times equal to the size of the list
         for (int i = 0; i < HCInst.Count; i++)
         {
+            print("did the update hearts thing");
             //Sets active each icon that is to be used
             bool bActivate = i < numHealth;
             HCInst[i].gameObject.SetActive(bActivate);

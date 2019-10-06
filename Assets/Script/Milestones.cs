@@ -111,7 +111,7 @@ public class Milestones : MonoBehaviour
             }
         }
 
-        if (counterDataScript.GetExperience() == 200)
+        if (counterDataScript.GetExperience() >= 200 && counterDataScript.GetExperience() <= 250)
         {
             if (myPlayer.GetComponent<SpriteRenderer>().sprite != knight)
             {
@@ -120,7 +120,7 @@ public class Milestones : MonoBehaviour
             }
         }
 
-        if (counterDataScript.GetExperience() == 500)
+        if (counterDataScript.GetExperience() >= 500)
         {
             Popup("YOU WIN!");
             Cursor.visible = true;
@@ -170,7 +170,7 @@ public class Milestones : MonoBehaviour
         //}
     }
 
-    void ZAWARDO()
+    public void ZAWARDO()
     {
         StartCoroutine(ScaleTime(1.0f, 0.0f, 3.0f));
     }    

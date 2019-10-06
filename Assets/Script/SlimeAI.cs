@@ -43,7 +43,7 @@ public class SlimeAI : MonoBehaviour
 
     int drop;
 
-    private FrogMan myDJ;
+    //private FrogMan myDJ;
 
 
 
@@ -51,7 +51,7 @@ public class SlimeAI : MonoBehaviour
     void Start()
     {
         //private FrogMan myDJ;
-        myDJ = FindObjectOfType<FrogMan>();
+        //myDJ = FindObjectOfType<FrogMan>();
 
     myCounter = FindObjectOfType<CountingMain>();
         myPlayer = FindObjectOfType<PlayerController>();

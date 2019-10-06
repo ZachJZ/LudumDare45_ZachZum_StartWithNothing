@@ -29,7 +29,7 @@ public class Genesis : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (myCounter.GetExperience() >= 10)
+        if (myCounter.GetExperience() == 10)
         {
             Player.SetActive(true);
             HUD.SetActive(true);
