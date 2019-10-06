@@ -6,6 +6,7 @@ public class FrogMan : MonoBehaviour
 {
 
     //sounds
+    public AudioClip hPickUp, playerHurt, slimeHurt, slimeSquish, swordSwish, swordTing, clubBonk, sadChord, winChord;
 
     // Start is called before the first frame update
     void Start()
