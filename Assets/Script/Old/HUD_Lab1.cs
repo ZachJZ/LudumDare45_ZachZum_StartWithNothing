@@ -33,16 +33,6 @@ public class HUD_Lab1 : MonoBehaviour {
     {
         difference = Begin.GetComponent<RectTransform>().position.x - Target.GetComponent<RectTransform>().position.x;
 
-        CreateHealthIcons(4);
-        //updateHealth(4);
-        //print("begi: " + Begin.GetComponent<RectTransform>().position.x);
-        //print("targ: " + Target.GetComponent<RectTransform>().position.x);
-
-        //print("Local begi: " + Begin.GetComponent<RectTransform>().localPosition.x);
-        //print("Local targ: " + Target.GetComponent<RectTransform>().localPosition.x);
-
-
-        //print("diff: " + difference);
     }
 	
 	// Update is called once per frame

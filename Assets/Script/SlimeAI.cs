@@ -38,7 +38,7 @@ public class SlimeAI : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    public BoxCollider2D HitBox; //not trigger
+    //public BoxCollider2D HitBox; //not trigger
     public BoxCollider2D HurtBox; //trigger
 
     int drop;

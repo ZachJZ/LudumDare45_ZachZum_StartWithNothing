@@ -93,8 +93,6 @@ public class PlayerController : MonoBehaviour
 
         attackCheck = clubAnim.GetBool("doAttack");
 
-//CreateHealthIcons(5);
-
     }
 
     // Update is called once per frame
@@ -198,6 +196,7 @@ public class PlayerController : MonoBehaviour
 
     public void freezeMenu(bool itsOn)
     {
+        //Cursor.visible = itsOn;
         PauseMenu.SetActive(itsOn);
         gamePause = itsOn;
 
@@ -219,7 +218,10 @@ public class PlayerController : MonoBehaviour
     {
         if (!iFrames)
         {
+            //print(pHealth + " is pHealth before --");
             pHealth--;
+            //print(pHealth + " is pHealth after --");
+
             iFrames = true;
             //play hurt sound
             //myDJ.playPlayerHurt();
@@ -241,6 +243,7 @@ public class PlayerController : MonoBehaviour
 
     public void LoseGame()
     {
+        Cursor.visible = true;
         freezeMenu(true);
         LoseScreen.SetActive(true);
         //myDJ.playSadChord();
@@ -258,7 +261,7 @@ public class PlayerController : MonoBehaviour
 
     public void CreateHealthIcons(int numHealth)
     {
-        //print(difference);
+        print("Creating " + numHealth + " health");
         //Check to see if the list is empty
         if (HCInst == null)
         {
@@ -301,13 +304,17 @@ public class PlayerController : MonoBehaviour
     //Function that sets active the correct number of Health icons
     public void updateHealth(int numHealth)
     {
+        print(numHealth + " is numHealth");
+
         //Runs through a number of times equal to the size of the list
         for (int i = 0; i < HCInst.Count; i++)
         {
-            print("did the update hearts thing");
+            //print("did the update hearts thing");
             //Sets active each icon that is to be used
             bool bActivate = i < numHealth;
             HCInst[i].gameObject.SetActive(bActivate);
+            print(i + " is heart, and " + bActivate + " is its state");
+
         }
     }
 }

@@ -13,6 +13,7 @@ public class Genesis : MonoBehaviour
 
     private CountingMain myCounter;
     private PlayerController myPLayer;
+    private bool StartingLine;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +25,14 @@ public class Genesis : MonoBehaviour
         HUD.SetActive(false);
         Block.SetActive(true);
         GetComponent<HUD_Lab1>().enabled = false;
+
+        StartingLine = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (myCounter.GetExperience() == 10)
+        if (myCounter.GetExperience() == 10 && StartingLine == false)
         {
             Player.SetActive(true);
             HUD.SetActive(true);
@@ -38,8 +41,9 @@ public class Genesis : MonoBehaviour
             Block.SetActive(false);
 
 myPLayer.CreateHealthIcons(5);
+            StartingLine = true;
             //Player.GetComponent<PlayerController>().enabled = false;
-           // StartCoroutine("EnableHim");
+            // StartCoroutine("EnableHim");
         }
     }
 

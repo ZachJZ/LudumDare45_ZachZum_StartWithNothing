@@ -172,6 +172,8 @@ public class Milestones : MonoBehaviour
 
     public void ZAWARDO()
     {
+        Cursor.visible = true;
+
         StartCoroutine(ScaleTime(1.0f, 0.0f, 3.0f));
     }    
 

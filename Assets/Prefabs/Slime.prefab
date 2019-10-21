@@ -150,11 +150,11 @@ MonoBehaviour:
   Fuse: 0
   Dex: 0
   Str: 0
-  HP: 0
+  MaxHP: 0
   JumpPow: 5
   Intel: 0
   Timer: 0
-  HitBox: {fileID: 0}
+  HitBox: {fileID: 3504383795984528348}
   HurtBox: {fileID: 3504383795984528337}
 --- !u!61 &3504383795984528337
 BoxCollider2D:
