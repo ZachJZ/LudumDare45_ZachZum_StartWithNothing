@@ -126,9 +126,7 @@ public class PlayerController : MonoBehaviour
                 {
                     GetComponent<SpriteRenderer>().enabled = true;
                     flashTimer = 0;
-
                 }
-
             }
 
             if (iTimer >= iLimit)
@@ -193,34 +191,28 @@ public class PlayerController : MonoBehaviour
             freezeMenu(false);
         }
     }
-
     public void freezeMenu(bool itsOn)
     {
         //Cursor.visible = itsOn;
         PauseMenu.SetActive(itsOn);
         gamePause = itsOn;
-
     }
 
     public void AttackOff()
     {
         clubAnim.SetBool("doAttack", false);
     }
-
     public void AttackStop()
     {
         swordAnim.SetBool("AttackNow", false);
         print("Attack stop activated");
 
     }
-
     public void DamagePlayer()
     {
         if (!iFrames)
         {
-            //print(pHealth + " is pHealth before --");
             pHealth--;
-            //print(pHealth + " is pHealth after --");
 
             iFrames = true;
             //play hurt sound
